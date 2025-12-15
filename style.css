@@ -1,0 +1,197 @@
+/*
+ * Style sheet for the Film Journal website.
+ * A neutral palette keeps the emphasis on the artwork and text while
+ * subtle interactions enhance usability (e.g. hover on images and
+ * details summaries). The modal lightbox adapts to mobile screens.
+ */
+
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fafafa;
+}
+
+header {
+  background-color: #222;
+  color: #fafafa;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.03em;
+}
+
+nav ul {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #ffc857;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h2 {
+  margin-top: 2.5rem;
+  color: #444;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.25rem;
+}
+
+p.film-summary {
+  font-style: italic;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+details {
+  margin: 1rem 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+details summary {
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding-right: 1.2rem;
+}
+
+/* Custom arrow indicator for details */
+details summary::after {
+  content: '›';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+details p {
+  margin-top: 0.5rem;
+}
+
+.artwork {
+  text-align: center;
+  margin: 1rem 0 0.5rem;
+}
+
+.artwork img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.artwork img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+figcaption {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+  text-align: left;
+}
+
+/* Modal / lightbox styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #ccc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .close {
+    right: 20px;
+  }
+  .artwork img {
+    border-radius: 0;
+  }
+}
